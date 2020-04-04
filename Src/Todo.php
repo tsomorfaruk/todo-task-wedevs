@@ -54,15 +54,6 @@ class Todo
         return $result->fetchColumn();
     }
 
-    public function getById($id, $table)
-    {
-        $sql = "SELECT * FROM $table WHERE id = :id";
-        $q = $this->conn->prepare($sql);
-        $q->execute(array(':id' => $id));
-        $data = $q->fetch(PDO::FETCH_ASSOC);
-        return $data;
-    }
-
     public function completeData($id, $table)
     {
         $sql = "UPDATE $table SET status=:status WHERE id=:id";
